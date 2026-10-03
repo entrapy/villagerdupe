@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "villagerdupe",
+  "version": "${version}",
+  "name": "VillagerDupe",
+  "description": "Standalone client command for villager offhand interactions.",
+  "authors": ["entrapy"],
+  "environment": "client",
+  "entrypoints": {
+    "client": ["dev.entrapy.villagerdupe.VillagerDupeClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.3",
+    "minecraft": "~26.2",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}
