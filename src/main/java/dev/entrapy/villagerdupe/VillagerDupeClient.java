@@ -9,18 +9,24 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.minecraft.network.chat.Component;
 
 public final class VillagerDupeClient implements ClientModInitializer {
+  private static final Component CREDIT = Component.literal(
+      "VillagerDupe by entrapy | YouTube: entrapy boomer");
+
   private final VillagerDupeCommand command = new VillagerDupeCommand();
 
   @Override
   public void onInitializeClient() {
     command.loadSettings();
     ClientTickEvents.END_CLIENT_TICK.register(command::tick);
+    ClientPlayConnectionEvents.JOIN.register((handler, sender, client) ->
+        client.gui.hud.getChat().addClientSystemMessage(CREDIT));
     ClientPlayConnectionEvents.DISCONNECT.register((handler, client) -> command.clearSession());
     ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
         dispatcher.register(literal("villagerdupe")
             .executes(context -> {
               context.getSource().sendFeedback(Component.literal(
                   command.arm(context.getSource().getClient())));
+              if (command.isArmed()) context.getSource().sendFeedback(CREDIT);
               return 1;
             })
             .then(literal("auto")
@@ -35,6 +41,7 @@ public final class VillagerDupeClient implements ClientModInitializer {
           net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource> context,
       String filter) {
     context.getSource().sendFeedback(Component.literal(command.toggleAuto(filter)));
+    if (command.isAutoEnabled()) context.getSource().sendFeedback(CREDIT);
     return 1;
   }
 }

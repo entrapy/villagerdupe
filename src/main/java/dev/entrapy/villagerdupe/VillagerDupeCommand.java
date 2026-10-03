@@ -83,6 +83,14 @@ final class VillagerDupeCommand {
     return saveSettings() ? result : result + "; could not save settings";
   }
 
+  boolean isArmed() {
+    return targetUuid != null;
+  }
+
+  boolean isAutoEnabled() {
+    return autoEnabled;
+  }
+
   void tick(Minecraft client) {
     if (autoEnabled) {
       tickAuto(client);
