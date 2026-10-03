@@ -1,6 +1,8 @@
 # VillagerDupe
 
-A standalone Fabric client mod for Minecraft 26.2. It adds one client-side command, `/villagerdupe`, with an optional repeating mode. Fabric API is required.
+A standalone Fabric client mod targeting Minecraft 1.21.6 and newer. It adds one client-side command, `/villagerdupe`, with an optional repeating mode. Fabric API is required.
+
+**Current download:** The v1.0.0 jar in [Releases](https://github.com/entrapy/villagerdupe/releases) is built for Minecraft **26.2 only**. Fabric will reject that jar on 1.21.6. A jar for 1.21.6 has not been released yet.
 
 ## Use
 
@@ -20,4 +22,4 @@ The mod will not automatically replace an offhand totem. Equip shears yourself i
 
 ## Build
 
-Use Java 25 and run `./gradlew build` (or `gradlew.bat build` on Windows). The mod jar is created in `build/libs/`. Install it with Fabric Loader and Fabric API for Minecraft 26.2.
+The current source and build configuration target Minecraft 26.2. Use Java 25 and run `./gradlew build` (or `gradlew.bat build` on Windows). The mod jar is created in `build/libs/`. Install it with Fabric Loader and Fabric API for Minecraft 26.2.
